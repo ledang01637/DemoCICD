@@ -8,25 +8,24 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest  # Thay 'ubuntu-latest' bằng 'windows-latest'
-
+    runs-on: windows-latest
     steps:
-    - name: 🔄 Checkout code
+    - name:  Checkout code
       uses: actions/checkout@v2
 
-    - name: 🧰 Setup .NET
+    - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '6.0.x' # Hoặc 7.0.x nếu bạn dùng .NET 7
+        dotnet-version: '8.0.x'
+    - name: Restore dependencies
+      run: |
+        dotnet restore D:\Tool\DemoCICD\DemoCICDProject\DemoCICDProject.sln
 
-    - name: 📦 Restore dependencies
-      run: dotnet restore
-
-    - name: 🏗 Build
+    - name:  Build
       run: dotnet build --no-restore --configuration Release
 
-    - name: 🧪 Test
+    - name:  Test
       run: dotnet test --no-build --verbosity normal
 
-    - name: 📤 Publish
+    - name:  Publish
       run: dotnet publish --configuration Release --output ./out
