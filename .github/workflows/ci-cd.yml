@@ -19,10 +19,8 @@ jobs:
         dotnet-version: '8.0.x'
     - name: Restore dependencies
       run: |
-    	cd DemoCICDProject
-    	dotnet restore DemoCICDProject.sln
-
-
+        cd DemoCICDProject
+        dotnet restore DemoCICDProject.sln
     - name:  Build
       run: dotnet build --no-restore --configuration Release
 
