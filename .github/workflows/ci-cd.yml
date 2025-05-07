@@ -22,10 +22,16 @@ jobs:
         cd DemoCICDProject
         dotnet restore DemoCICDProject.sln
     - name:  Build
-      run: dotnet build --no-restore --configuration Release
+      run: |
+        cd DemoCICDProject
+        dotnet build --no-restore --configuration Release
 
     - name:  Test
-      run: dotnet test --no-build --verbosity normal
+      run: |
+        cd DemoCICDProject
+        dotnet test --no-build --verbosity normal
 
     - name:  Publish
-      run: dotnet publish --configuration Release --output ./out
+      run: |
+        cd DemoCICDProject
+        dotnet publish --configuration Release --output ./out
